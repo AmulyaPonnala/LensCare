@@ -1,0 +1,239 @@
+* {
+    margin: 0;
+  }
+  
+  body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  
+  body {  
+    text-align: center;
+    font-family: Helvetica Neu, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+
+  }
+  .container {
+    display: flex;
+    height: 100%;
+  }
+
+  .left, .right {
+    width: 30%;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+  }
+
+  .center {
+    width: 40%;
+  }
+
+  
+  button, select {
+    cursor: pointer;
+    background: rgba(144, 238, 144, 0.5); /* Light green color */
+    color: #444;
+    font-weight: bold;
+    font-variant: small-caps;  
+    font-size: 16px;
+    padding: 8px;
+    min-width: 120px;
+    border: none;
+    margin: 0;
+    -webkit-appearance: none;
+    transition: background 0.3s, color 0.3s; /* Adding transition for smooth hover effect */
+  }
+  
+  button:hover {
+    background: rgba(144, 238, 144, 0.8); /* Light green color on hover */
+    color: white; /* White text color on hover */
+  }
+  
+  
+  .content{
+    height: 100vh;
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    width: 100%;
+    height: 70px;
+    box-shadow: 0 0 3px black;
+    background-color: rgba(24, 6, 185, 0.8);
+    color: rgb(255, 255, 255);
+  }
+  .headerTitle {
+    font-size: 24pt;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    margin-top: 12px;
+  }
+  
+  
+  #JeelizVTOWidget {
+    flex-grow: 1;
+    width: 100%;
+    /* max-width: calc(100vh - 70px); */
+    width: 100%; /* Change the width as per your requirement */
+    height: 100%; /* Change the height as per your requirement */
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    border: 2px solid blue; /* Border for the container */
+}
+
+#JeelizVTOWidgetCanvas {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Change the width as per your requirement */
+    height: 500px; /* Change the height as per your requirement */
+    border: 2px solid red; /* Border for the canvas */
+}
+  .JeelizVTOWidgetControls {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    position: absolute;
+    right:600px;
+    margin: 0;
+  }
+  .buttonIcon {
+    display: inline-block;
+    margin-right: 8px;
+  }
+  
+  .JeelizVTOWidgetControlsTop {
+    top: 16px;
+    height: 40px;
+  }
+  .JeelizVTOWidgetControlsTop > button {
+     width: 45%;
+     min-width: auto;
+  }
+  
+  #JeelizVTOWidgetChangeModelContainer {
+    position: relative;
+    bottom: 16px;
+    height: 40px;  
+  }
+  #JeelizVTOWidgetChangeModelContainer > button {
+    width: 20%;
+    min-width: auto;
+  }
+  
+  #JeelizVTOWidgetLoading {
+    position: fixed;
+    z-index: 4;
+    cursor: wait;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+  }
+  .JeelizVTOWidgetLoadingText {
+    color: white;
+    font-size: 32pt;
+    margin-top: 40vh;
+  }
+  
+  #JeelizVTOWidgetAdjustNotice {
+    display: none;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    z-index: 3;
+    font-size: 16px;
+    bottom: 0;  
+    justify-content: center;
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+  
+  #JeelizVTOWidgetAdjustExit {
+    border: 1px solid white;
+    background: transparent;
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+  }
+  
+  #JeelizVTOWidgetAdjust {
+    display: none;
+  }
+  #JeelizVTOWidgetChangeModelContainer {
+    display: none;
+  }
+  #buttonResizeCanvas {
+    display: none;
+  }
+  .form-container {
+    max-width: 500px;
+    margin: auto; /* Center the form horizontally */
+    margin-top: 35vh;
+    padding: 20px;
+    border: 1px solid #ccc; /* Add border */
+    background-color: #f9f9f9; /* Set background color */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align form items to the center horizontally */
+    justify-content: center; /* Align form vertically */
+  }
+  
+  form {
+    width: 100%;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - 20px); /* Adjust width to accommodate padding */
+  }
+  
+  input[type="submit"] {
+    background-color: rgba(144, 238, 144, 0.5);
+    color: #444;
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    width: calc(100% - 20px); /* Adjust width to accommodate padding */
+  }
+  
+  .input-container {
+    width: 100%;
+  }
+  
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  p {
+    font-size: 18px; /* Set the font size */
+    font-weight: bold; /* Set the font weight */
+    text-align: center; /* Center align the text */
+    margin-bottom: 20px; /* Add bottom margin for spacing */
+  }
+  
+  

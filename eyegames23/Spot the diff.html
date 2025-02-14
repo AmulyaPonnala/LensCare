@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spot the Difference</title>
+  <style>
+    body {
+  font-family: 'courier new';
+  text-align: center;
+  display: flex;
+  background-color: rgb(78, 0, 194);
+}
+
+#container {
+  margin: 0 auto;
+  width: 800px;
+}
+
+img {
+  width: 800px;
+  margin: auto;
+  z-index: 1;
+}
+
+#test {
+  background-color: blue;
+}
+
+#answers div {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 4px white solid;
+  margin-bottom: -120px;
+}
+
+#answer-one {
+  position: relative;
+  top: -420px;
+  left: 467px;
+}
+
+#answer-two {
+  position: relative;
+  top: -510px;
+  left: 540px;
+}
+
+#answer-three {
+  position: relative;
+  top: -377px;
+  left: 590px;
+}
+
+#answer-four {
+  position: relative;
+  top: -125px;
+  left: 618px;
+}
+
+#answer-five {
+  position: relative;
+  top: -30px;
+  left: 560px;
+}
+
+button {
+  position: absolute;
+  width: 50%;
+  left: 25%;
+  top: 700px; 
+  padding: 30px;
+  font-family: 'courier new';
+  font-size: 16px;
+  color: black;
+  border: none;
+  background-color: rgb(214, 198, 22);
+}
+  </style>
+
+  <script>
+   function oneLight() {
+  alert("Well done! You found difference, the 'P' light is off and then on.");
+}
+
+function twoYoda() {
+  alert("Well done! You found difference, Yoda has moved.");
+}
+
+function threeMissing() {
+  alert("Well done - this one was tricky! You found difference, a thin book was added in.");
+}
+
+function fourSwap() {
+  alert("Well done! You found difference, these two Karin Slaughter books were swapped around.");
+}
+
+function fiveAdd() {
+  alert("Well done! You found difference, an additional book appears.");
+}
+
+function showAnswers(div1, div2)
+{
+   d1 = document.getElementById(div1);
+   d2 = document.getElementById(div2);
+   if( d2.style.display == "none" )
+   {
+      d1.style.display = "none";
+      d2.style.display = "block";
+   }
+   else
+   {
+      d1.style.display = "none";
+      d2.style.display = "none";
+   }
+}
+  </script>
+</head>
+<body>
+  
+    <div id="container">
+    
+      <h2 style="color: white;">Spot the Difference</h2>
+  
+      <p style="color: white;"> There are five differences to spot, good luck!</p>
+  
+      <div>
+  
+        <img src="https://assets.codepen.io/5044406/spot_the_difference.JPG" alt="Spot the difference image" usemap="#workmap">
+  
+        <map name="workmap">
+  
+          <area id="test" shape="rect" coords="97,200,157,270" alt="P Light left" onclick="oneLight()">
+  
+          <area shape="rect" coords="494,200,552,270" alt="P Light right" onclick="oneLight()">
+  
+          <area shape="rect" coords="124,279,175,317" alt="Yoda left" onclick="twoYoda()">
+  
+          <area shape="rect" coords="570,110,620,149" alt="Yoda right" onclick="twoYoda()">
+  
+          <area shape="rect" coords="240,200,255,270" alt="Missing book left" onclick="threeMissing()">
+  
+          <area shape="rect" coords="635,200,645,270" alt="Missing book right" onclick="threeMissing()">
+  
+          <area shape="rect" coords="258,420,290,500" alt="Book swap left" onclick="fourSwap()">
+  
+          <area shape="rect" coords="650,420,682,505" alt="Book swap right" onclick="fourSwap()">
+  
+          <area shape="rect" coords="190,515,250,545" alt="Additional book left" onclick="fiveAdd()">
+  
+          <area shape="rect" coords="582,517,645,547" alt="Additional book right" onclick="fiveAdd()">
+  
+        </map>
+  
+        <div id="answers" style="display: none">
+  
+          <div id="answer-one"></div>
+          <div id="answer-two"></div>
+          <div id="answer-three"></div>
+          <div id="answer-four"></div>
+          <div id="answer-five"></div>
+  
+        </div>
+        
+      </div>
+      
+      <div id="button">
+        <a href="javascript:showAnswers('button', 'answers')" style="display: block">
+          <button>Click here to reveal the answers!</button>
+        </a>
+      </div>
+      
+    </div>
+    
+  </body>

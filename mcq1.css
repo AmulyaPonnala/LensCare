@@ -1,0 +1,130 @@
+body {
+  font-size: 100%;
+  ickfont-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 400;
+  
+}
+
+input[type=radio],
+input[type=checkbox] {
+  font-size: 0.8em;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  border: 0.1em solid;
+  background: none;
+  padding: 0.2em;
+  margin: 0 0.2em;
+  font-family: Consolas, "Courier New", monospace;
+  width: 1em;
+  height: 1em;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+}
+
+input[type=radio]:focus,
+input[type=checkbox]:focus {
+  outline: 0;
+  border-color: #359;
+}
+
+input[type=radio] {
+  border-radius: 100%;
+  background-clip: content-box;
+}
+input[type=radio]:checked {
+  background-color: #4ac;
+}
+
+h1 {
+  font-size: 3em;
+  margin: 1em auto;
+  text-align: center;
+}
+.h3 .question1{
+    font-size:2e,;
+    margin:1em auto;
+    text-align: center;
+}
+.h3 .question2{
+    font-size:2e,;
+    margin:1em auto;
+    text-align: center;
+}
+.h3 .question3{
+    font-size:2e,;
+    margin:1em auto;
+    text-align: center;
+}
+.h3 .question4{
+    font-size:2e,;
+    margin:1em auto;
+    text-align: center;
+}
+.h3 .question5{
+    font-size:2e,;
+    margin:1em auto;
+    text-align: center;
+}
+.h3 .question6{
+    font-size:2e,;
+    margin:1em auto;
+    text-align: center;
+}
+.h3 .question7{
+    font-size:2e,;
+    margin:1em auto;
+    text-align: center;
+}
+.h3 .question8{
+    font-size:2e,;
+    margin:1em auto;
+    text-align: center;
+}
+.test {
+  position: absolute;
+  top: 25%;
+  bottom: 25%;
+  right: 25%;
+  left: 25%;
+  overflow: hidden;
+}
+.test1 .test2 .test3 .test4 .test5 .test6 .test7 .question {
+  font-size: 2.3em;
+  margin: 0.5em 0;
+  border-bottom: 2px dashed #666;
+}
+.test .answer {
+  display: inline-block;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border-bottom: 4px solid transparent;
+}
+.test .answer:hover {
+  border-color: #bbb;
+}
+
+.test .facit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  background: #FFF;
+  top: 100%;
+  transition: top 500ms ease;
+}
+
+.test .correct {
+  color: green;
+}
+
+.test .incorrect {
+  color: red;
+}
+
+.test .false:checked ~ .incorrect {
+  top: 0;
+}
+.test .true:checked ~ .correct {
+  top: 0;
+}

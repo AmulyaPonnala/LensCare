@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Letter Game</title>
+<style>
+  /* Original styles from your game code */
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color:rgb(78, 0, 194);
+  }
+  #letters {
+    font-size: 48px;
+    position: absolute;
+    top: 30%;
+    left: 45%;
+  }
+  button {
+    width: 100px;
+    height: 40px;
+    position: fixed;
+    border: 2px solid rgb(6, 0, 0);
+    padding: 5px;
+    color: #000000;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  #nextButton {
+    top: 70%;
+    right: 52%;
+  }
+  #exitButton {
+    top: 70%;
+    right: 44%;
+  }
+</style>
+</head>
+<body>
+<h2><div id="text" style="color: white;">Click on Next to start the test</div></h2>
+<div id="letters"></div>
+<button id="nextButton" class="button animate" onclick="nextLevel()"><b>Next</b></button>
+<button id="exitButton" onclick="confirmExit()"><b>Exit</b></button>
+
+<script>
+  // Original JavaScript code from your game
+
+  let currentLevel = 0;
+  let minFontSize = 1;
+
+  function nextLevel() {
+    document.getElementById("text").style.display = "none";
+    currentLevel++;
+    document.getElementById("letters").style.fontSize = `${Math.max(48 - currentLevel * 3, minFontSize)}px`;
+    document.getElementById("letters").textContent = getRandomLetters();
+  }
+
+  function confirmExit() {
+    let confirmExit = confirm("Do you want to exit the game?");
+
+    if (confirmExit) {
+      alert("You exited the game at Level " + currentLevel);
+      window.close();
+    } else {
+      // Continue the game
+    }
+  }
+
+  function getRandomLetters() {
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let randomString = '';
+    for (let i = 0; i < 5; i++) {
+      randomString += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+    }
+    return randomString;
+  }
+</script>
+</body>
+</html>

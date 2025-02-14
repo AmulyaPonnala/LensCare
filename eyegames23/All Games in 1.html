@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>All in 1</title>
+  <style>
+    body {
+      min-height: 100%;
+      background: #030d39;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding-top: 1rem;
+      padding-bottom: 2rem;
+      box-sizing: border-box;
+    }
+    .log {
+      border-radius: 90%;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      padding: 0rem;
+      box-sizing: border-box;
+    }
+
+    .card-row {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .card {
+      background: rgb(78, 0, 194);
+      width: calc(var(--card-height));
+      height: var(--card-height);
+      padding: 3px;
+      position: relative;
+      border-radius: 6px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      display: flex;
+      font-size: 1.5em;
+      color: rgb(88 199 250 / 0%);
+      cursor: pointer;
+      font-family: sans serif;
+      margin: 1rem;
+    }
+
+    .card:hover {
+      color: rgb(88 199 250 / 100%);
+      transition: color 1s;
+    }
+
+    .card:hover:before,
+    .card:hover:after {
+      animation: none;
+      opacity: 0;
+    }
+
+    .card::before {
+  content: attr(data-random-text); /* Display the random text from the data-random-text attribute */
+  width: 100%; /* Adjust as needed */
+  height: 100%; /* Adjust as needed */
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em; /* Adjust as needed */
+  color: white; /* Adjust as needed */
+}
+
+    .card::after {
+      position: absolute;
+      content: "";
+      top: calc(var(--card-height) / 6);
+      left: 0;
+      right: 0;
+      z-index: -1;
+      height: 100%;
+      width: 100%;
+      margin: 0 auto;
+      transform: scale(0.8);
+      filter: blur(calc(var(--card-height) / 6));
+      background-image: linear-gradient(
+        var(--rotate),
+        #5ddcff,
+        #3c67e3 43%,
+        rgb(78, 0, 194)
+      );
+      opacity: 1;
+      transition: opacity 0.5s;
+      animation: spin 2.5s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        --rotate: 0deg;
+      }
+      100% {
+        --rotate: 360deg;
+      }
+    }
+
+    a {
+      color: #212534;
+      text-decoration: none;
+      font-family: sans-serif;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    /* Custom properties */
+    :root {
+      --card-height: 30vh;
+      --card-width: calc(var(--card-height) / 1.5);
+    }
+
+    .card-container .card:nth-child(n+5) {
+      margin-top: 2rem;
+    }
+
+    /* Add this to show the extended glow before hovering */
+    .card:focus-within::before,
+    .card:focus-within::after {
+      animation: none;
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+ 
+    <b><h1 style="color:rgb(255, 255, 255);text-align:center;font-size: 40px;">EYE GAMES</h1></b>
+  <div class="card-container">
+    <div class="card-row">
+        <a href="Visual Memory Game.html" target="_top"><div class="card" data-random-text="Visual Memory Game"><q>Enhances Eye Coordination and Perception through rapid recognition of Visual Patterns.</q></div></a>
+        <a href="Emoji Set game.html" target="_top"><div class="card" data-random-text="Emoji Set Game"><q>An award-winning game that helps build Visual Perception</q></div></a>
+        <a href="Jigsaw puzzles.html" target="_top"><div class="card" data-random-text="Jigsaw Puzzles"><q>They help improve visual-spatial reasoning and hand-eye coordination</q></div></a>
+        <a href="shape tracing.html" target="_top"><div class="card" data-random-text="Shape Tracing"><q>Promoting better coordination and visual acuity, which can aid in strengthening the lazy eye over time.</q></div></a>
+    </div>
+    <div class="card-row">
+        <a href="Spot the diff.html" target="_top"><div class="card" data-random-text="Spot the Difference"><q>Helps improve visual discrimination skills by spotting differences between two pictures</q></div></a>
+        <a href="alaphabet moving.html" target="_top"><div class="card" data-random-text="Alphabet Recognition Game"><q>Enhances visual tracking and recognition skills, promoting better eye-hand coordination and focusing abilities.</q></div></a>
+        <a href="text decrement.html" target="_top"><div class="card" data-random-text="Visual Acuity Test Game"><q>Assess visual acuity, helping to identify potential vision issues</q></div></a>
+        <a href="Set Game.html" target="_top"><div class="card" data-random-text="Visual Search Game"><q>Sharpen your visual perception and cognitive skills with challenging visual search puzzles</q></div></a>
+    </div>
+  </div>
+
+  <script>
+    // Your JavaScript code here
+  </script>
+</body>
+
+</html>

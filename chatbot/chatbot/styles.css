@@ -1,0 +1,81 @@
+/* Styles for the chatbot icon */
+.chat-icon-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.chat-icon {
+  width: 60px; /* Adjust icon size as needed */
+  height: auto;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Styles for the chat window */
+.chat-window {
+  display: none;
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 300px; /* Adjust chat window width as needed */
+  max-height: 50vh; /* Adjust chat window height as needed */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+.chat-header {
+  background-color: #5846f9; /* Green color */
+  color: #fff;
+  padding: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  position: relative;
+}
+
+.chat-close {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.chat-body {
+  padding: 10px;
+}
+
+/* Styles for FAQ questions and answers */
+.faq-question {
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 5px;
+  font-weight: bold;
+  border: 1px solid #5846f9; /* Green color */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Add hover effect for FAQ questions */
+.faq-question:hover {
+  background-color: #5846f9;
+  color: #fff;
+}
+
+/* Add styles to hide answers by default */
+.faq-answer {
+  display: none;
+  margin-top: 5px;
+}
+
+/* Add styles to show answers when clicked */
+.faq-answer.show {
+  display: block;
+  margin-top: 10px;
+  border-left: 3px solid #5846f9; /* Green color */
+  padding-left: 10px;
+}
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shape Tracing Game</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color:rgb(78, 0, 194);
+    }
+    #game-container {
+      width: 80%;
+      height: 800vb;
+      border: 1px solid #ccc;
+      position: relative;
+    }
+    .shape {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%; /* Initial shape is a circle */
+      background-color: #f00; /* Red color */
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+    #instructions {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    #score {
+      text-align: center;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <h2 id="instructions">Trace the shape with your mouse!</h2>
+    <div id="shape" class="shape"></div>
+    <p id="score"></p>
+  </div>
+  <script>
+    const shape = document.getElementById('shape');
+    const instructions = document.getElementById('instructions');
+    const scoreElement = document.getElementById('score');
+
+    let score = 0;
+    let isMouseDown = false;
+    let startX, startY;
+
+    function moveShape(event) {
+      if (isMouseDown) {
+        const deltaX = event.clientX - startX;
+        const deltaY = event.clientY - startY;
+        shape.style.left = `${shape.offsetLeft + deltaX}px`;
+        shape.style.top = `${shape.offsetTop + deltaY}px`;
+      }
+    }
+
+    function checkCompletion() {
+      const shapeCenterX = shape.offsetLeft + shape.offsetWidth / 2;
+      const shapeCenterY = shape.offsetTop + shape.offsetHeight / 2;
+
+      // Check if the center of the shape is within a certain threshold of the center of the game container
+      const threshold = 20; // Adjust threshold as needed
+      const containerCenterX = document.getElementById('game-container').offsetWidth / 2;
+      const containerCenterY = document.getElementById('game-container').offsetHeight / 2;
+
+      if (Math.abs(shapeCenterX - containerCenterX) <= threshold && Math.abs(shapeCenterY - containerCenterY) <= threshold) {
+        score++;
+        instructions.textContent = "Nice! Trace again.";
+        shape.style.left = "50%";
+        shape.style.top = "50%";
+        shape.style.transform = "translate(-50%, -50%)"; // Center the shape
+      } else {
+        instructions.textContent = "Keep tracing!";
+      }
+
+      scoreElement.textContent = `Score: ${score}`;
+    }
+
+    shape.addEventListener('mousedown', (event) => {
+      isMouseDown = true;
+      startX = event.clientX;
+      startY = event.clientY;
+    });
+
+    shape.addEventListener('mouseup', () => {
+      isMouseDown = false;
+      checkCompletion();
+    });
+
+    document.addEventListener('mousemove', moveShape);
+  </script>
+</body>
+</html>

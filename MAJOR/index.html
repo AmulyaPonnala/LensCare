@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MAJOR PROJECT | LENS CARE DEMO</title>
+  <meta charset='utf-8' />
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+  <script src='./major.js'></script>
+
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+
+  <link rel='stylesheet' href='./first.css' />
+  <script>
+    function validateForm() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (name === '') {
+        alert('Please enter your name.');
+        return false;
+      }
+
+      if (email === '') {
+        alert('Please enter your email.');
+        return false;
+      } else if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return false;
+      }
+
+      if (phone === '') {
+        alert('Please enter your phone number.');
+        return false;
+      } else if (isNaN(phone) || phone.length !== 10) {
+        alert('Please enter a valid 10-digit phone number.');
+        return false;
+      }
+
+      if (message === '') {
+        alert('Please enter your message.');
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+
+  <script>
+    let _isResized = false;
+
+    function test_resizeCanvas() {
+      let halfHeightPx = Math.round(window.innerHeight / 2).toString() + 'px';
+
+      const domWidget = document.getElementById('JeelizVTOWidget');
+      domWidget.style.maxHeight = (_isResized) ? 'none' : halfHeightPx;
+
+      _isResized = !_isResized;
+    }
+
+
+    function get_initialSKU() {
+      const queryString = window.location.search;
+      const URLParams = new URLSearchParams(queryString);
+      const sku = URLParams.get('sku') || 'rayban_aviator_or_vertFlash';
+      console.log('Initial SKU =', sku);
+      return sku;
+    }
+
+
+    function get_isShadow() {
+      const queryString = window.location.search;
+      const URLParams = new URLSearchParams(queryString);
+      return URLParams.get('isHideShadow') ? false : true;
+    }
+
+    function main() {
+      JEELIZVTOWIDGET.start({
+        isShadow: get_isShadow(),
+        sku: get_initialSKU(),
+        searchImageMask: 'https://appstatic.jeeliz.com/jeewidget/images/target512.jpg',
+        searchImageColor: 0xeeeeee,
+        callbackReady: function () {
+          console.log('INFO: JEELIZVTOWIDGET is ready :)');
+        },
+        onError: function (errorLabel) {
+          alert('An error happened. errorLabel =' + errorLabel)
+          switch (errorLabel) {
+            case 'WEBCAM_UNAVAILABLE':
+              break;
+
+            case 'NOFILE':
+              break;
+
+            case 'WRONGFILEFORMAT':
+              break;
+
+            case 'INVALID_SKU':
+              break;
+
+            case 'FALLBACK_UNAVAILABLE':
+              break;
+
+            case 'PLACEHOLDER_NULL_WIDTH':
+            case 'PLACEHOLDER_NULL_HEIGHT':
+              break;
+
+            case 'FATAL':
+            default:
+              break;
+          }
+        }
+      })
+    }
+
+
+    function load_modelBySKU() {
+  const sku = prompt('Please enter a glasses model:', 'rayban_wayfarer_havane_marron');
+  if (sku) {
+    JEELIZVTOWIDGET.load(sku);
+    document.getElementById('selectedEyewear').value = sku; // Set the selected eyewear in a hidden input field
+    document.getElementById('selectedEyewearModel').value = `Eyewear ${sku}`; // Set the selected eyewear model in the hidden input field
+  }
+}
+function setSelectedEyewearModel(model) {
+  document.getElementById('selectedEyewearModel').value = model;
+}
+
+
+
+
+  </script>
+</head>
+
+<body onload="main()">
+  <div class='content'>
+    <div class='header'>
+      <div class="headerTitle">
+        LENS CARE
+      </div>
+    </div>
+<div class="container">
+      <div class="left">
+        <!-- Left content -->
+        <p>Choose Your Eyewear</p>
+        
+          <button onclick="JEELIZVTOWIDGET.load('rayban_aviator_or_vertFlash');setSelectedEyewearModel('Eyewear 1')">Eyewear 1</button>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_round_cuivre_pinkBrownDegrade');setSelectedEyewearModel('Eyewear 2')">Eyewear 2</button>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_andy_violet_violet_mirroir');setSelectedEyewearModel('Eyewear 3')">Eyewear 3</button>
+          <br><br>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_justin_noir_bleu');setSelectedEyewearModel('Eyewear 4')">Eyewear 4</button>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_clubround_havaneNoir_vertClassique_g15');setSelectedEyewearModel('Eyewear 5')">Eyewear 5</button>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_boyfriend_havane_marron_clair_degrade');setSelectedEyewearModel('Eyewear 6')">Eyewear 6</button>
+          <br><br>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_predator_noir_gris_mirroir');setSelectedEyewearModel('Eyewear 7')">Eyewear 7</button>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_wayfarer_denimNoir_bleuMirroir');setSelectedEyewearModel('Eyewear 8')">Eyewear 8</button>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_wayfarer_denimBleuClair_bleuDegrade');setSelectedEyewearModel('Eyewear 9')">Eyewear 9</button>
+          <br><br>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_new_wayfarer_havane_marronClassique_g15');setSelectedEyewearModel('Eyewear 10')">Eyewear 10</button>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_predator_noir_vert_classique');setSelectedEyewearModel('Eyewear 11')">Eyewear 11</button>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_chris_havane_gun_vert_classique');setSelectedEyewearModel('Eyewear 12')">Eyewear 12</button>
+          <br><br>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_andy_violet_violet_mirroir');setSelectedEyewearModel('Eyewear 13')">Eyewear 13</button>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_wayfarer_havane_marron');setSelectedEyewearModel('Eyewear 14')">Eyewear 14</button>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_clubmaster_noir_marronDegrade');setSelectedEyewearModel('Eyewear 15')">Eyewear 15</button>
+          <br><br>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_caravan_bronze_cuivre_lilas_mirroir');setSelectedEyewearModel('Eyewear 16')">Eyewear 16</button>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_chris_noir_argent_gris_degrade');setSelectedEyewearModel('Eyewear 17')">Eyewear 17</button>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_boyfriend_noir_gris_classique');setSelectedEyewearModel('Eyewear 18')">Eyewear 18</button>
+          <br><br>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_erika_havaneGun_marronDegrade');setSelectedEyewearModel('Eyewear 19')">Eyewear 19</button>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_round_cuivre_pinkBrownDegrade');setSelectedEyewearModel('Eyewear 20')">Eyewear 20</button>
+          <button onclick="JEELIZVTOWIDGET.load('rayban_justin_havane_gris');setSelectedEyewearModel('Eyewear 21')">Eyewear 21</button>
+          <br><br>
+          <button onclick="JEELIZVTOWIDGET.load('latch_black_gray');setSelectedEyewearModel('Eyewear 22')">Eyewear 22</button>
+          <button onclick="JEELIZVTOWIDGET.load('oakley_radar_path_black_silver');setSelectedEyewearModel('Eyewear 23')">Eyewear 23</button>
+          <button onclick="JEELIZVTOWIDGET.load('aliexpress_steampunk_gold_blue_mirror');setSelectedEyewearModel('Eyewear 24')">Eyewear 24</button>
+          <br><br>
+          <button onclick="JEELIZVTOWIDGET.load('aliexpress_cateye02_black_black');setSelectedEyewearModel('Eyewear 25')">Eyewear 25</button>
+          <button onclick="JEELIZVTOWIDGET.load('aliexpress_steampunk_gold_black');setSelectedEyewearModel('Eyewear 26')">Eyewear 26</button>
+          <button onclick="JEELIZVTOWIDGET.load('aliexpress_veithdia_silver');setSelectedEyewearModel('Eyewear 27')">Eyewear 27</button>
+      <br><br>
+        <button onclick="load_modelBySKU()">Search by Name</button>
+        <br><br>
+        <button onclick='test_resizeCanvas();'>Resize widget</button>
+        <br><br>
+        <button id='JeelizVTOWidgetAdjust'>
+          <div><i class="fas fa-arrows-alt"></i></div>Adjust
+        </button>
+        <div id='JeelizVTOWidgetAdjustNotice'>
+          Move the glasses to adjust them.
+          <button class='JeelizVTOWidgetBottomButton' id='JeelizVTOWidgetAdjustExit'>Quit</button>
+        </div>
+
+        <div id='JeelizVTOWidgetLoading'>
+          <div class='JeelizVTOWidgetLoadingText'>
+            LOADING...
+          </div>
+        </div>
+
+      </div>
+        <!-- center start-->
+      <div class="center">
+        <div id='JeelizVTOWidget'>
+          <canvas id='JeelizVTOWidgetCanvas'></canvas>
+        </div>
+      </div>
+        
+      <!-- right content -->
+      <div class="right">
+        <div class="form-container">
+          <P>Fill This Form to Save The Data</P>
+          <form id="myForm" action="http://localhost:3000/submit-form" method="POST" onsubmit="return validateForm()">
+            <!-- Hidden input field to store the selected eyewear model -->
+            <input type="hidden" id="selectedEyewearModel" name="selectedEyewearModel">
+
+            <!-- Other form fields -->
+            <div class="input-container">
+              <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="input-container">
+              <input type="email" id="email" name="email" placeholder="Enter your email" required> 
+            </div>
+            <div class="input-container">
+              <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+            </div>
+            <div class="input-container">
+              <input type="hidden" id="selectedEyewear" name="selectedEyewear">
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alphabet Following Game</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: rgb(78, 0, 194);
+    }
+    #game-container {
+      width: 100%;
+      height: 100vb;
+      border: 1px solid rgb(78, 0, 194);
+      position: relative;
+    }
+    #alphabet {
+      font-size: 48px;
+      font-weight: bold;
+      position: absolute;
+      color: white;
+    }
+    #input {
+      font-size: 24px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+    }
+    #score {
+      margin-top: 20px;
+    }
+    #game-over {
+      font-size: 36px;
+      font-weight: bold;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <b></b><h1 style="color: white;">Alphabet Following Game</h1></b></u>
+    <p style="color: white;">Follow the moving alphabet and identify it. Enter your guess and click "Next".</p>
+    <div id="alphabet"></div>
+    <input type="text" id="input" placeholder="Enter alphabet">
+    <button onclick="checkAnswer()" style="height: 1cm; width: 3cm; color: #000000; background-color:darkkhaki ;">Next</button>
+    <div id="score"></div>
+    <div id="game-over"></div>
+  </div>
+  <script>
+    const container = document.getElementById('game-container');
+    const alphabetElement = document.getElementById('alphabet');
+    const inputElement = document.getElementById('input');
+    const scoreElement = document.getElementById('score');
+    const gameOverElement = document.getElementById('game-over');
+
+    let currentAlphabet;
+    let x = Math.random() * (container.offsetWidth - alphabetElement.offsetWidth);
+    let y = Math.random() * (container.offsetHeight - alphabetElement.offsetHeight);
+    let dx = 5;
+    let dy = 5;
+    let correctAnswers = 0;
+    let wrongAnswers = 0;
+    let roundCount = 0;
+
+    function generateAlphabet() {
+      const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      currentAlphabet = alphabet[Math.floor(Math.random() * alphabet.length)];
+      alphabetElement.textContent = currentAlphabet;
+      alphabetElement.style.left = x + 'px';
+      alphabetElement.style.top = y + 'px';
+      roundCount++;
+    }
+
+    function moveAlphabet() {
+      x += dx;
+      y += dy;
+
+      if (x + alphabetElement.offsetWidth > container.offsetWidth || x < 0) {
+        dx *= -1;
+      }
+      if (y + alphabetElement.offsetHeight > container.offsetHeight || y < 0) {
+        dy *= -1;
+      }
+
+      alphabetElement.style.left = x + 'px';
+      alphabetElement.style.top = y + 'px';
+    }
+
+    function checkAnswer() {
+      const guess = inputElement.value.toUpperCase();
+      if (guess === currentAlphabet) {
+        correctAnswers++;
+      } else {
+        wrongAnswers++;
+      }
+      
+      if (roundCount === 10) {
+        gameOverElement.textContent = `Game Over! Correct: ${correctAnswers}, Wrong: ${wrongAnswers}`;
+        gameOverElement.style.display = "block";
+        return;
+      }
+
+      generateAlphabet();
+      inputElement.value = "";
+      scoreElement.textContent = `Round: ${roundCount}/10, Correct: ${correctAnswers}, Wrong: ${wrongAnswers}`;
+    }
+
+    generateAlphabet();
+    setInterval(moveAlphabet, 50);
+  </script>
+</body>
+</html>
